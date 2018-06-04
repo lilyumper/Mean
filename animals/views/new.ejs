@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Create a New Animal</title>
+</head>
+<body>
+    <h3>Create a New Animal</h3>
+    <% if (typeof(errors) !='undefined') { %>
+        <% for(var x in errors) { %>
+        <h3><%= errors[x].message %></h3>
+        <%} %>
+    <%} %>
+    <form action="/add", method="post">
+            <label for="name">Name: </label>
+            <input type="text" name='name'>
+            <label for="type">Anmial Type: </label>
+            <input type="text" name="animal_type">
+            <label for="color">Animal Color:  </label>
+            <input type="text" name="color">
+            <input type="submit" value="create">
+        </form>
+        <a href="/">Home</a>
+    
+</body>
+</html>

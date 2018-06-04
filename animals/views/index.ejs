@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Wonderful World of Animals!!!!</title>
+</head>
+<body>
+    <h1>Welcome to the Wonderful World of Animals!!!!!!</h1>
+    <table>
+        <thead> 
+            <th>Animal Name</th>
+            <th>Animal Type</th>
+            <th>Animal Color</th>
+            <th>Actions  </th>
+
+        </thead>
+        <tbody>
+            <% for(x of animals) { %>
+            <tr>
+                <td><%= x.name%></td>
+                <td><%= x.animal_type %></td>
+                <td><%= x.color %></td>
+                <td>
+                    <a href="/edit/<%=x.id%>">Edit</a>
+                    <a href="/delete/<%=x.id%>">Delete</a>
+                    <a href="/show/<%=x.id%>">Show</a>
+                </td>
+            </tr>
+            <% } %> 
+        </tbody>
+    </table>
+    <form>
+    <h5>You Wanna Make your Own Animal???  Click The Link Below!</h5>
+    <a href="/new">Create Your Own Animal!</a>
+    </form>
+</body>
+</html>
