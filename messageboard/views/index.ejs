@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Message Board</title>
+</head>
+<body>
+    <h1>The Dojo Message Board</h1>
+    <hr>
+    <% if (typeof(errors) !='undefined') { %>
+        <% for(var x in errors) { %>
+        <h3><%= errors[x].message %></h3>
+        <h3><%= errors[x].comment %></h3>
+        <%} %>
+    <%} %>
+    <form action="/create" method ="post">
+        <label for="name">Name:</label>
+        <input type="text" name='name'>
+        <label for="mess">Message:</label>
+        <input type="text" name="post">
+        <input type="submit" value="Post Message">
+    </form>
+        <%for(x of messages) { %>
+            <hr>
+            <p>Name: <%= x.name %></p>
+            <p>Message: <%= x.post %></p>
+            <hr>
+            <h5>Comments</h5>
+            <%for(y of comments){ %>
+                <%if(x.id.toString() == y._message.toString()) {%>
+                    <p>Name: <%=y.name%></p>
+                    <p>Comment: <%=y.post%></p>
+                <%}%>
+            <%} %>
+        <form action="/posts/<%=x.id%>" method="post">
+            <label for="name">Name:</label>
+            <input type="text" name='name'>
+            <label for="mess">Message:</label>
+            <input type="text" name="post">
+            <input type='submit' value="Comment">
+        </form>
+    <%} %>
+</body>
+</html>
